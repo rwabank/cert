@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Trade & Swap €CERT — 10+ DEXs</title>
+<link rel="icon" href="cert_logo.png" />
+<link rel="stylesheet" href="ai-agent.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: radial-gradient(ellipse at top, #0F2E1F 0%, #0A0E27 50%, #060920 100%); color: #E0E6FF; line-height: 1.6; padding-top: 80px; padding-bottom: 60px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.glass-card { background: linear-gradient(160deg, rgba(26,30,65,0.7), rgba(15,46,31,0.7)); backdrop-filter: blur(12px); border: 1px solid rgba(16,185,129,0.3); border-radius: 24px; padding: 40px; margin-bottom: 24px; box-shadow: 0 20px 60px rgba(16,185,129,0.15); }
+.glass-card h1 { font-size: 34px; margin-bottom: 8px; }
+.glass-card h1 .highlight { color: #10B981; }
+.glass-card .sub { color: #8A94C8; margin-bottom: 24px; }
+.swap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.swap-card { background: rgba(26,30,65,0.4); border: 1px solid rgba(16,185,129,0.15); border-radius: 16px; padding: 20px 12px; text-align: center; transition: 0.3s; text-decoration: none; color: #E0E6FF; }
+.swap-card:hover { border-color: #10B981; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(16,185,129,0.2); }
+.swap-card .icon { font-size: 30px; display: block; margin-bottom: 6px; filter: drop-shadow(0 0 12px rgba(16,185,129,0.6)); }
+.swap-card .name { font-weight: 600; font-size: 15px; }
+.swap-card .desc { font-size: 12px; color: #5A649A; }
+.pair-badge { display: inline-block; background: rgba(16,185,129,0.15); color: #10B981; padding: 2px 12px; border-radius: 12px; font-size: 11px; margin-top: 6px; }
+.contract-box { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 16px; margin: 20px 0; text-align: center; font-size: 13px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.contract-box .addr { color: #10B981; }
+.contract-box .copy-btn { background: transparent; border: none; color: #5A649A; cursor: pointer; font-size: 13px; }
+.contract-box .copy-btn:hover { color: #10B981; }
+.contract-box .solscan-link { color: #5A649A; text-decoration: none; font-size: 13px; margin-left: 8px; }
+.contract-box .solscan-link:hover { color: #fff; }
+.staking-cta { background: linear-gradient(160deg, rgba(16,185,129,0.15), rgba(52,211,153,0.05)); border: 2px solid rgba(16,185,129,0.4); border-radius: 16px; padding: 22px; margin: 24px 0; text-align: center; }
+.staking-cta h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+.staking-cta p { color: #8A94C8; font-size: 13px; margin-bottom: 14px; }
+.staking-cta a { display: inline-block; background: linear-gradient(135deg, #10B981, #34D399); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 4px 15px rgba(16,185,129,0.4); }
+.back-link { display: inline-block; margin-top: 20px; color: #10B981; text-decoration: none; font-weight: 500; }
+.logo-img { height: 70px; width: auto; margin-bottom: 20px; border-radius: 50%; box-shadow: 0 0 30px rgba(16,185,129,0.6); }
+.counter-box { text-align: center; padding: 16px; background: rgba(16,185,129,0.05); border-radius: 12px; margin: 20px 0; font-size: 14px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.counter-box .counter-visitors { color: #10B981; font-weight: 600; }
+.counter-box .counter-clients { color: #34D399; font-weight: 600; }
+@media (max-width: 800px) { .swap-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 450px) { .swap-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="glass-card">
+<img src="cert_logo.png" alt="€CERT" class="logo-img" />
+<h1>Trade & <span class="highlight">Swap €CERT</span></h1>
+<p class="sub">10+ DEXs and aggregators</p>
+
+<div class="swap-grid">
+  <a href="https://jup.ag/tokens/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="swap-card"><span class="icon">🔄</span><span class="name">Jupiter</span><span class="desc">Best price</span><span class="pair-badge">SOL → CERT</span></a>
+  <a href="https://opensea.io/token/solana/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="swap-card"><span class="icon">🖼️</span><span class="name">OpenSea</span><span class="desc">Direct buy</span><span class="pair-badge">Card → CERT</span></a>
+  <a href="https://app.uniswap.org/explore/tokens/solana/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="swap-card"><span class="icon">🦄</span><span class="name">Uniswap</span><span class="desc">Multi-chain</span><span class="pair-badge">SOL → CERT</span></a>
+  <a href="https://www.geckoterminal.com/solana/pools/7fJh68EFNEnjMNzSQNrJMykVdNwD9wggmPNDhLuW4zPp" target="_blank" class="swap-card"><span class="icon">🦎</span><span class="name">GeckoTerminal</span><span class="desc">Meteora pool</span><span class="pair-badge">USDC → CERT</span></a>
+  <a href="https://app.binance.com/uni-qr/web3-token-details?tokenCA=BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="swap-card"><span class="icon">🟡</span><span class="name">Binance Web3</span><span class="desc">Fiat → CERT</span><span class="pair-badge">EUR → CERT</span></a>
+  <a href="https://www.okx.com/" target="_blank" class="swap-card"><span class="icon">🔵</span><span class="name">OKX</span><span class="desc">Asian exchange</span><span class="pair-badge">EUR → CERT</span></a>
+  <a href="https://www.kraken.com/" target="_blank" class="swap-card"><span class="icon">🐙</span><span class="name">Kraken</span><span class="desc">Regulated</span><span class="pair-badge">EUR → CERT</span></a>
+  <a href="https://1inch.io/" target="_blank" class="swap-card"><span class="icon">🔄</span><span class="name">1inch</span><span class="desc">Aggregator</span><span class="pair-badge">Any → CERT</span></a>
+  <a href="https://app.raydium.io/swap/?outputMint=BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="swap-card"><span class="icon">☀️</span><span class="name">Raydium</span><span class="desc">Solana DEX</span><span class="pair-badge">SOL → CERT</span></a>
+</div>
+
+<div class="staking-cta">
+  <h3>💎 Stake €CERT</h3>
+  <p>Earn €AUDT + €PROOF. Up to 25% APY.</p>
+  <a href="staking.html">Go to Staking →</a>
+</div>
+
+<div class="counter-box">
+  💎 Visitors: <span class="counter-visitors">2,030</span>
+  &nbsp;·&nbsp;
+  🤝 Clients: <span class="counter-clients">0</span>
+</div>
+
+<div class="contract-box">
+  📜 Contract: <span class="addr">BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg</span>
+  <button onclick="navigator.clipboard.writeText('BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg')" class="copy-btn">📋 Copy</button>
+  <a href="https://solscan.io/token/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="solscan-link">🔍 Solscan</a>
+</div>
+
+<a href="index.html" class="back-link">← Back to €CERT Home</a>
+</div>
+</div>
+<script src="counter.js"></script>
+<script src="ai-agent.js"></script>
+</body>
+</html>
