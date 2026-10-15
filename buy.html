@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy €CERT — Card, SWIFT, SEPA, Crypto</title>
+<link rel="icon" href="cert_logo.png" />
+<link rel="stylesheet" href="ai-agent.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: radial-gradient(ellipse at top, #0F2E1F 0%, #0A0E27 50%, #060920 100%); color: #E0E6FF; line-height: 1.6; padding-top: 80px; padding-bottom: 60px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+.glass-card { background: linear-gradient(160deg, rgba(26,30,65,0.7), rgba(15,46,31,0.7)); backdrop-filter: blur(12px); border: 1px solid rgba(16,185,129,0.3); border-radius: 24px; padding: 40px; margin-bottom: 24px; box-shadow: 0 20px 60px rgba(16,185,129,0.15); }
+.glass-card h1 { font-size: 34px; margin-bottom: 8px; }
+.glass-card h1 .highlight { color: #10B981; }
+.glass-card .sub { color: #8A94C8; margin-bottom: 24px; }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.method-card { background: rgba(26,30,65,0.4); border: 1px solid rgba(16,185,129,0.15); border-radius: 16px; padding: 20px 16px; text-align: center; transition: 0.3s; text-decoration: none; color: #E0E6FF; }
+.method-card:hover { border-color: #10B981; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(16,185,129,0.2); }
+.method-card .icon { font-size: 32px; display: block; margin-bottom: 8px; filter: drop-shadow(0 0 12px rgba(16,185,129,0.6)); }
+.method-card .name { font-weight: 600; }
+.method-card .desc { font-size: 13px; color: #5A649A; }
+.contract-box { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 16px; margin: 20px 0; text-align: center; font-size: 13px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.contract-box .addr { color: #10B981; }
+.contract-box .copy-btn { background: transparent; border: none; color: #5A649A; cursor: pointer; font-size: 13px; }
+.contract-box .copy-btn:hover { color: #10B981; }
+.contract-box .solscan-link { color: #5A649A; text-decoration: none; font-size: 13px; margin-left: 8px; }
+.contract-box .solscan-link:hover { color: #fff; }
+.pool-box { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 16px; margin: 20px 0; text-align: center; font-size: 13px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.pool-box .addr { color: #34D399; }
+.pool-box .copy-btn { background: transparent; border: none; color: #5A649A; cursor: pointer; font-size: 13px; }
+.pool-box .copy-btn:hover { color: #34D399; }
+.pool-box .link { color: #34D399; text-decoration: none; font-size: 13px; margin-left: 8px; }
+.pool-box .link:hover { color: #fff; }
+.staking-cta { background: linear-gradient(160deg, rgba(16,185,129,0.15), rgba(52,211,153,0.05)); border: 2px solid rgba(16,185,129,0.4); border-radius: 16px; padding: 22px; margin: 24px 0; text-align: center; }
+.staking-cta h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+.staking-cta p { color: #8A94C8; font-size: 13px; margin-bottom: 14px; }
+.staking-cta a { display: inline-block; background: linear-gradient(135deg, #10B981, #34D399); color: #fff; padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; text-decoration: none; box-shadow: 0 4px 15px rgba(16,185,129,0.4); }
+.back-link { display: inline-block; margin-top: 20px; color: #10B981; text-decoration: none; font-weight: 500; }
+.logo-img { height: 70px; width: auto; margin-bottom: 20px; border-radius: 50%; box-shadow: 0 0 30px rgba(16,185,129,0.6); }
+.counter-box { text-align: center; padding: 16px; background: rgba(16,185,129,0.05); border-radius: 12px; margin: 20px 0; font-size: 14px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.counter-box .counter-visitors { color: #10B981; font-weight: 600; }
+.counter-box .counter-clients { color: #34D399; font-weight: 600; }
+@media (max-width: 700px) { .method-grid { grid-template-columns: 1fr 1fr; } .glass-card { padding: 24px; } }
+@media (max-width: 450px) { .method-grid { grid-template-columns: 1fr; } .contract-box, .pool-box { font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="glass-card">
+<img src="cert_logo.png" alt="€CERT" class="logo-img" />
+<h1>Buy <span class="highlight">Certificate of Audit Revenue (€CERT)</span></h1>
+<p class="sub">Choose your preferred payment method</p>
+
+<div class="method-grid">
+  <a href="https://opensea.io/token/solana/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="method-card"><span class="icon">💳</span><span class="name">Card (Visa/MC)</span><span class="desc">via OpenSea</span></a>
+  <a href="https://jup.ag/tokens/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="method-card"><span class="icon">🔄</span><span class="name">Jupiter</span><span class="desc">Best price</span></a>
+  <a href="https://www.geckoterminal.com/solana/pools/7fJh68EFNEnjMNzSQNrJMykVdNwD9wggmPNDhLuW4zPp" target="_blank" class="method-card"><span class="icon">🦎</span><span class="name">GeckoTerminal</span><span class="desc">Meteora pool</span></a>
+  <a href="https://app.uniswap.org/explore/tokens/solana/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="method-card"><span class="icon">🦄</span><span class="name">Uniswap</span><span class="desc">Solana</span></a>
+  <a href="https://app.binance.com/uni-qr/web3-token-details?tokenCA=BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg&binanceChainId=CT_501&chain=sol" target="_blank" class="method-card"><span class="icon">🟡</span><span class="name">Binance Web3</span><span class="desc">Global</span></a>
+  <a href="https://www.binance.com/" target="_blank" class="method-card"><span class="icon">🏦</span><span class="name">SWIFT</span><span class="desc">International wire</span></a>
+  <a href="https://www.okx.com/" target="_blank" class="method-card"><span class="icon">🇪🇺</span><span class="name">SEPA</span><span class="desc">EU bank</span></a>
+  <a href="https://www.binance.com/en/convert" target="_blank" class="method-card"><span class="icon">💱</span><span class="name">POS / Convert</span><span class="desc">Fiat → CERT</span></a>
+  <a href="https://www.okx.com/" target="_blank" class="method-card"><span class="icon">🇨🇳</span><span class="name">CIPS</span><span class="desc">China cross-border</span></a>
+</div>
+
+<div class="staking-cta">
+  <h3>💎 Stake €CERT</h3>
+  <p>Earn €AUDT + €PROOF. 30/90/365 day stakes. Up to 25% APY.</p>
+  <a href="staking.html">Go to Staking →</a>
+</div>
+
+<div class="counter-box">
+  💎 Visitors: <span class="counter-visitors">2,030</span>
+  &nbsp;·&nbsp;
+  🤝 Clients: <span class="counter-clients">0</span>
+</div>
+
+<div class="contract-box">
+  📜 Contract: <span class="addr">BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg</span>
+  <button onclick="navigator.clipboard.writeText('BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg')" class="copy-btn">📋 Copy</button>
+  <a href="https://solscan.io/token/BZ7ZJA3FgWshS9fqhhavfBXZ8165aC7h4FUhCrztcQjg" target="_blank" class="solscan-link">🔍 Solscan</a>
+</div>
+
+<div class="pool-box">
+  🌊 Meteora Pool (€CERT/USDC): <span class="addr">7fJh68EFNEnjMNzSQNrJMykVdNwD9wggmPNDhLuW4zPp</span>
+  <button onclick="navigator.clipboard.writeText('7fJh68EFNEnjMNzSQNrJMykVdNwD9wggmPNDhLuW4zPp')" class="copy-btn">📋 Copy</button>
+  <a href="https://www.geckoterminal.com/solana/pools/7fJh68EFNEnjMNzSQNrJMykVdNwD9wggmPNDhLuW4zPp" target="_blank" class="link">🔍 GeckoTerminal</a>
+</div>
+
+<a href="index.html" class="back-link">← Back to €CERT Home</a>
+</div>
+</div>
+<script src="counter.js"></script>
+<script src="ai-agent.js"></script>
+</body>
+</html>
