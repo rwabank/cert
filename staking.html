@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>€CERT — Staking & Rewards</title>
+<link rel="icon" href="cert_logo.png" />
+<link rel="stylesheet" href="ai-agent.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: radial-gradient(ellipse at top, #0F2E1F 0%, #0A0E27 50%, #060920 100%); color: #E0E6FF; line-height: 1.6; padding-top: 80px; padding-bottom: 60px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+header { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10,14,39,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(16,185,129,0.25); padding: 10px 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 8px; }
+.logo img { height: 36px; width: auto; border-radius: 50%; box-shadow: 0 0 15px rgba(16,185,129,0.5); }
+.logo-text { font-size: 20px; font-weight: 700; color: #fff; }
+nav { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+nav a { color: #8A94C8; text-decoration: none; font-size: 12px; font-weight: 500; }
+nav a:hover { color: #10B981; }
+nav a.active { color: #10B981; border-bottom: 2px solid #10B981; }
+.btn-primary { background: linear-gradient(135deg, #10B981 0%, #34D399 100%); color: #fff; padding: 8px 18px; border-radius: 30px; font-weight: 700; text-decoration: none; font-size: 13px; box-shadow: 0 4px 15px rgba(16,185,129,0.4); }
+section { padding: 30px 0; }
+.section-header { text-align: center; margin-bottom: 30px; }
+.section-tag { display: inline-block; background: rgba(16,185,129,0.12); color: #10B981; padding: 4px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(16,185,129,0.2); }
+.section-header h1 { font-size: 36px; font-weight: 700; margin: 8px 0; }
+.section-header h1 .highlight { color: #10B981; }
+.section-header p { color: #8A94C8; max-width: 700px; margin: 0 auto; }
+
+.stake-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 30px 0; }
+.stake-card { background: linear-gradient(160deg, rgba(26,30,65,0.6), rgba(15,46,31,0.6)); border: 2px solid rgba(16,185,129,0.2); border-radius: 20px; padding: 28px 22px; text-align: center; transition: 0.3s; position: relative; }
+.stake-card:hover { border-color: #10B981; transform: translateY(-6px); box-shadow: 0 20px 50px rgba(16,185,129,0.3); }
+.stake-card.featured { border-color: #10B981; box-shadow: 0 0 40px rgba(16,185,129,0.3); }
+.stake-card.featured::before { content: '⭐ POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #10B981, #34D399); color: #fff; padding: 4px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
+.stake-card .lock-period { font-size: 12px; color: #8A94C8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.stake-card .stake-amount { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+.stake-card .stake-amount .unit { font-size: 16px; color: #10B981; }
+.stake-card .apy { font-size: 40px; font-weight: 800; color: #10B981; margin: 16px 0 8px; text-shadow: 0 0 20px rgba(16,185,129,0.6); }
+.stake-card .apy-label { font-size: 11px; color: #8A94C8; text-transform: uppercase; letter-spacing: 1px; }
+.stake-card .rewards-list { list-style: none; margin: 20px 0; text-align: left; padding: 16px; background: rgba(0,0,0,0.3); border-radius: 12px; }
+.stake-card .rewards-list li { color: #E0E6FF; font-size: 13px; padding: 6px 0; display: flex; align-items: center; gap: 8px; }
+.stake-card .rewards-list li::before { content: '✓'; color: #10B981; font-weight: 700; }
+.stake-card .stake-btn { display: block; width: 100%; background: linear-gradient(135deg, #10B981 0%, #34D399 100%); color: #fff; padding: 14px 20px; border-radius: 30px; font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 12px; transition: 0.3s; border: none; cursor: pointer; }
+.stake-card .stake-btn:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(16,185,129,0.6); }
+
+.stake-calc { max-width: 800px; margin: 40px auto; background: linear-gradient(160deg, rgba(26,30,65,0.7), rgba(15,46,31,0.7)); border: 2px solid rgba(16,185,129,0.4); border-radius: 24px; padding: 32px; box-shadow: 0 20px 60px rgba(16,185,129,0.2); }
+.stake-calc h3 { color: #10B981; font-size: 20px; margin-bottom: 20px; text-align: center; }
+.stake-calc-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.stake-calc-row label { color: #8A94C8; font-size: 13px; display: block; margin-bottom: 6px; }
+.stake-calc-row input, .stake-calc-row select { flex: 1; padding: 12px 16px; border-radius: 12px; border: 1px solid #1E2350; background: #060920; color: #fff; font-size: 14px; outline: none; min-width: 120px; }
+.stake-calc-row input:focus, .stake-calc-row select:focus { border-color: #10B981; }
+.stake-calc-result { background: rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; margin-top: 20px; text-align: center; }
+.stake-calc-result .result-label { font-size: 12px; color: #8A94C8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.stake-calc-result .result-value { font-size: 32px; font-weight: 800; color: #10B981; text-shadow: 0 0 20px rgba(16,185,129,0.5); }
+.stake-calc-result .result-sub { font-size: 13px; color: #8A94C8; margin-top: 8px; }
+
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 800px; margin: 30px auto; }
+.stat-box { background: linear-gradient(160deg, rgba(26,30,65,0.6), rgba(15,46,31,0.6)); border: 1px solid rgba(16,185,129,0.3); border-radius: 16px; padding: 20px 16px; text-align: center; }
+.stat-box .stat-label { font-size: 12px; color: #8A94C8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.stat-box .stat-value { font-size: 22px; font-weight: 700; color: #10B981; text-shadow: 0 0 15px rgba(16,185,129,0.5); }
+
+.counter-box { text-align: center; padding: 16px; background: rgba(16,185,129,0.05); border-radius: 12px; margin: 20px 0; font-size: 14px; color: #8A94C8; font-family: 'Courier New', monospace; }
+.counter-box .counter-visitors { color: #10B981; font-weight: 600; }
+.counter-box .counter-clients { color: #34D399; font-weight: 600; }
+.back-link { display: inline-block; margin-top: 16px; color: #10B981; text-decoration: none; font-weight: 500; }
+footer { background: linear-gradient(180deg, #060920, #030510); padding: 20px 0; text-align: center; border-top: 1px solid rgba(16,185,129,0.2); margin-top: 20px; }
+footer p { color: #3A406A; font-size: 13px; }
+@media (max-width: 800px) { .stake-grid { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .section-header h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="container header-inner">
+    <div class="logo"><img src="cert_logo.png" alt="€CERT" /><span class="logo-text">CERT €CERT</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="fintech1.html">4 Models</a>
+      <a href="fintech2.html">Mechanics</a>
+      <a href="staking.html" class="active">Staking</a>
+      <a href="governance.html">Governance</a>
+      <a href="ecosystem.html">Ecosystem</a>
+    </nav>
+    <a href="buy.html" class="btn-primary">Buy €CERT</a>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">🔒 Staking Rewards</span>
+      <h1>Stake <span class="highlight">€CERT</span> — Earn €AUDT + €PROOF</h1>
+      <p>Lock your €CERT for 30, 90, or 365 days. Earn working units (€AUDT) and certificates (€PROOF). Longer stake = higher reward.</p>
+    </div>
+
+    <div class="stake-grid">
+      <div class="stake-card">
+        <div class="lock-period">30 Days</div>
+        <div class="stake-amount">Flexible <span class="unit">Stake</span></div>
+        <div class="apy">5%</div>
+        <div class="apy-label">APY in €AUDT</div>
+        <ul class="rewards-list">
+          <li>5% APY in €AUDT</li>
+          <li>Rewards weekly</li>
+          <li>Unstake anytime after 30d</li>
+        </ul>
+        <button class="stake-btn" onclick="alert('Connect wallet to stake. This is a preview.')">Stake 30 Days</button>
+      </div>
+
+      <div class="stake-card featured">
+        <div class="lock-period">90 Days</div>
+        <div class="stake-amount">Standard <span class="unit">Stake</span></div>
+        <div class="apy">12%</div>
+        <div class="apy-label">APY in €AUDT</div>
+        <ul class="rewards-list">
+          <li>12% APY in €AUDT</li>
+          <li>Rewards weekly</li>
+          <li>+€PROOF bonus at maturity</li>
+        </ul>
+        <button class="stake-btn" onclick="alert('Connect wallet to stake. This is a preview.')">Stake 90 Days</button>
+      </div>
+
+      <div class="stake-card">
+        <div class="lock-period">365 Days</div>
+        <div class="stake-amount">Deep <span class="unit">Stake</span></div>
+        <div class="apy">25%</div>
+        <div class="apy-label">APY in €AUDT + €PROOF</div>
+        <ul class="rewards-list">
+          <li>25% APY in €AUDT</li>
+          <li>Rewards weekly</li>
+          <li>+€PROOF bonus (5% of stake)</li>
+          <li>Governance multiplier ×2</li>
+        </ul>
+        <button class="stake-btn" onclick="alert('Connect wallet to stake. This is a preview.')">Stake 365 Days</button>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">Total Staked</div>
+        <div class="stat-value">0 CERT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Avg APY</div>
+        <div class="stat-value">14%</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Rewards Paid</div>
+        <div class="stat-value">0 AUDT</div>
+      </div>
+    </div>
+
+    <div class="stake-calc">
+      <h3>💰 Reward Calculator</h3>
+      <div class="stake-calc-row">
+        <div style="flex:1;min-width:120px;">
+          <label>Amount to stake (CERT)</label>
+          <input type="number" id="calcAmount" value="10000" min="1" />
+        </div>
+        <div style="flex:1;min-width:120px;">
+          <label>Lock period</label>
+          <select id="calcPeriod" onchange="calcReward()">
+            <option value="5">30 days — 5% APY</option>
+            <option value="12" selected>90 days — 12% APY</option>
+            <option value="25">365 days — 25% APY</option>
+          </select>
+        </div>
+      </div>
+      <div class="stake-calc-result">
+        <div class="result-label">Estimated Annual Rewards</div>
+        <div class="result-value" id="calcResult">1,200 AUDT</div>
+        <div class="result-sub" id="calcResultSub">12% APY • 90 days lock • €PROOF bonus at maturity</div>
+      </div>
+    </div>
+
+    <div class="counter-box">
+      💎 Visitors: <span class="counter-visitors">2,030</span>
+      &nbsp;·&nbsp;
+      🤝 Clients: <span class="counter-clients">0</span>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to €CERT Home</a>
+  </div>
+</section>
+
+<footer><div class="container"><p>© 2026 AviaTrust. Built on Solana. | €CERT Staking</p></div></footer>
+
+<script>
+document.getElementById('calcAmount').addEventListener('input', calcReward);
+
+function calcReward() {
+  const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
+  const apy = parseFloat(document.getElementById('calcPeriod').value) || 0;
+  const reward = Math.floor(amount * apy / 100);
+  document.getElementById('calcResult').textContent = reward.toLocaleString() + ' AUDT';
+
+  let sub = apy + '% APY';
+  if (apy === 5) sub += ' • 30 days lock';
+  if (apy === 12) sub += ' • 90 days lock • €PROOF bonus at maturity';
+  if (apy === 25) sub += ' • 365 days lock • €PROOF bonus (5% of stake) + Governance ×2';
+  document.getElementById('calcResultSub').textContent = sub;
+}
+
+calcReward();
+</script>
+
+<script src="counter.js"></script>
+<script src="ai-agent.js"></script>
+</body>
+</html>
